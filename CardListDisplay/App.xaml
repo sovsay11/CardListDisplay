@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CardListDisplay.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--Might not use this button style-->
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="Margin" Value="15"/>
+                <Setter Property="HeightRequest" Value="70"/>
+                <Setter Property="HeightRequest" Value="70"/>
+            </Style>
+            
+            <!--Styles for the frame and label-->
+            <Style x:Key="frameStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="Margin" Value="15,10,15,10"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="LightBlue"/>
+            </Style>
+            <Style x:Key="labelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Title"/>
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+
+            <!--Test for changing styles-->
+            <Style x:Key="newFrameStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="Margin" Value="15,10,15,10"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="Green"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
