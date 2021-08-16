@@ -31,9 +31,9 @@
             <Style x:Key="newFrameStyle" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="15"/>
                 <Setter Property="Margin" Value="15,10,15,10"/>
-                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="HeightRequest" Value="70"/>
                 <Setter Property="BorderColor" Value="Black"/>
-                <Setter Property="BackgroundColor" Value="Green"/>
+                <Setter Property="BackgroundColor" Value="LightBlue"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

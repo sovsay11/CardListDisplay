@@ -14,18 +14,30 @@ namespace CardListDisplay
         public MainPage()
         {
             InitializeComponent();
-            accounts = new List<string>() { "Apple", "Banana", "Cherry", "Donut", "Eclair", "Fruit"}; // initialize the list
+            accounts = new List<string>() { "Apple", "Banana", "Cherry", "Donut", "Eclair", "Fruit" }; // initialize the list
             LoadCards(); // call method to load cards
         }
 
         private void LoadCards()
         {
+            bool toggle = true;
             TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer(); // new tap gesture recognizer
             // add a tap event
             tapGestureRecognizer.Tapped += (object sender, EventArgs e) =>
             {
                 Frame tFrame = (Frame)sender; // grab the object details
-                tFrame.Resources["frameStyle"] = Application.Current.Resources["newFrameStyle"]; // change the resources style
+                if (toggle)
+                {
+                    tFrame.SetDynamicResource(StyleProperty, "newFrameStyle");
+                    //tFrame.Resources["frameStyle"] = Application.Current.Resources["newFrameStyle"]; // change the resources style
+                    toggle = false;
+                }
+                else
+                {
+                    tFrame.SetDynamicResource(StyleProperty, "frameStyle");
+                    //tFrame.Resources["newFrameStyle"] = Application.Current.Resources["frameStyle"]; // change the resources style
+                    toggle = true;
+                }
                 //Resources["frameStyle"] = Application.Current.Resources["newFrameStyle"];
             };
 
@@ -40,7 +52,7 @@ namespace CardListDisplay
                 StackLayout innerLayout = new StackLayout(); // new stack layout, this will hold the text content
 
                 // labels with styles and text
-                Label accountLabel = new Label { Text = accounts[i], Style = (Style)Application.Current.Resources["labelStyle"]};
+                Label accountLabel = new Label { Text = accounts[i], Style = (Style)Application.Current.Resources["labelStyle"] };
                 Label showLabel = new Label { Text = "Tap to View" };
 
                 // adding everything to the frame and layouts
