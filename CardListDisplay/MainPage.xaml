@@ -4,10 +4,8 @@
              x:Class="CardListDisplay.MainPage">
     <ScrollView>
         <StackLayout x:Name="MainLayout">
-            <!--Here is a template card
-        I plan on using a frame with content within it
-        Not sure if I'll use a button, though-->
-            <Frame Style="{DynamicResource frameStyle}">
+            <!--Here is the XAML version of the template card I created (use for future reference)-->
+            <!--<Frame Style="{DynamicResource frameStyle}">
                 <StackLayout>
                     <Label Text="Account Title" Style="{DynamicResource labelStyle}"/>
                     <Label Text="Tap to view" Style="{DynamicResource labelViewStyle}"/>
@@ -23,7 +21,7 @@
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Frame.GestureRecognizers>
-            </Frame>
+            </Frame>-->
         </StackLayout>
     </ScrollView>
 </ContentPage>
