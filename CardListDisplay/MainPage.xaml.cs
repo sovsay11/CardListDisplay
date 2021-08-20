@@ -11,39 +11,42 @@ namespace CardListDisplay
     public partial class MainPage : ContentPage
     {
         private List<string> accounts; // declare new list for account names
+        private List<string> showAccounts;
         public MainPage()
         {
             InitializeComponent();
             accounts = new List<string>() { "Apple", "Banana", "Cherry", "Donut", "Eclair", "Fruit" }; // initialize the list
+            showAccounts = new List<string>() { "Bunnies", "Kittens", "Puppies", "Cubs" };
             LoadCards(); // call method to load cards
         }
 
         private void LoadCards()
         {
-            bool toggle = true;
-            TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer(); // new tap gesture recognizer
-            // add a tap event
-            tapGestureRecognizer.Tapped += (object sender, EventArgs e) =>
-            {
-                Frame tFrame = (Frame)sender; // grab the object details
-                if (toggle)
-                {
-                    tFrame.SetDynamicResource(StyleProperty, "newFrameStyle");
-                    //tFrame.Resources["frameStyle"] = Application.Current.Resources["newFrameStyle"]; // change the resources style
-                    toggle = false;
-                }
-                else
-                {
-                    tFrame.SetDynamicResource(StyleProperty, "frameStyle");
-                    //tFrame.Resources["newFrameStyle"] = Application.Current.Resources["frameStyle"]; // change the resources style
-                    toggle = true;
-                }
-                //Resources["frameStyle"] = Application.Current.Resources["newFrameStyle"];
-            };
-
             // adding cards to the list!
             for (int i = 0; i < accounts.Count; i++)
             {
+                bool toggle = true;
+                TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer(); // new tap gesture recognizer
+                                                                                        // add a tap event
+                tapGestureRecognizer.Tapped += (object sender, EventArgs e) =>
+                {
+                    Frame tFrame = (Frame)sender; // grab the object details
+
+                    if (toggle)
+                    {
+                        tFrame.SetDynamicResource(StyleProperty, "newFrameStyle");
+                        //tFrame.Resources["frameStyle"] = Application.Current.Resources["newFrameStyle"]; // change the resources style
+                        toggle = false;
+                    }
+                    else
+                    {
+                        tFrame.SetDynamicResource(StyleProperty, "frameStyle");
+                        //tFrame.Resources["newFrameStyle"] = Application.Current.Resources["frameStyle"]; // change the resources style
+                        toggle = true;
+                    }
+                    //Resources["frameStyle"] = Application.Current.Resources["newFrameStyle"];
+                };
+
                 // new frame, this is the main background of the template
                 Frame frame = new Frame();
                 frame.SetDynamicResource(StyleProperty, "frameStyle"); // setting the style of the frame, needs to be dynamic
