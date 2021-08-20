@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CardListDisplay.MainPage">
     <ScrollView>
-        <StackLayout x:Name="MainLayout" Padding="0, 10, 0, 10">
+        <StackLayout x:Name="MainLayout" Padding="0, 10, 0, 20">
             <!--Here is the XAML version of the template card I created (use for future reference)-->
             <!--<Frame Style="{DynamicResource frameStyle}">
                 <StackLayout>

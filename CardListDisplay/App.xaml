@@ -18,10 +18,12 @@
             <Style x:Key="frameStyle" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="15"/>
                 <Setter Property="Margin" Value="15,10,15,10"/>
-                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="HeightRequest" Value="48"/>
                 <Setter Property="BorderColor" Value="Black"/>
                 <Setter Property="BackgroundColor" Value="LightBlue"/>
             </Style>
+            
+            <!--Label style-->
             <Style x:Key="labelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="Title"/>
                 <Setter Property="TextColor" Value="Black"/>
@@ -31,7 +33,7 @@
             <Style x:Key="newFrameStyle" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="15"/>
                 <Setter Property="Margin" Value="15,10,15,10"/>
-                <Setter Property="HeightRequest" Value="70"/>
+                <Setter Property="HeightRequest" Value="85"/>
                 <Setter Property="BorderColor" Value="Black"/>
                 <Setter Property="BackgroundColor" Value="LightBlue"/>
             </Style>

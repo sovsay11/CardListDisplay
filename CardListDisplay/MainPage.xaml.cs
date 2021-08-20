@@ -16,7 +16,7 @@ namespace CardListDisplay
         {
             InitializeComponent();
             accounts = new List<string>() { "Apple", "Banana", "Cherry", "Donut", "Eclair", "Fruit" }; // initialize the list
-            showAccounts = new List<string>() { "Bunnies", "Kittens", "Puppies", "Cubs" };
+            showAccounts = new List<string>() { "Bunnies", "Kittens", "Puppies", "Cubs", "Babies", "Random" };
             LoadCards(); // call method to load cards
         }
 
@@ -25,22 +25,34 @@ namespace CardListDisplay
             // adding cards to the list!
             for (int i = 0; i < accounts.Count; i++)
             {
+
+                StackLayout innerLayout = new StackLayout(); // new stack layout, this will hold the text content
+
+                // labels with styles and text
+                Label accountLabel = new Label { Text = accounts[i], Style = (Style)Application.Current.Resources["labelStyle"] };
+                Label showLabel = new Label { Text = "Tap to View" };
+                Label username = new Label { Text = showAccounts[i] };
+                Label password = new Label { Text = showAccounts[i] };
+
                 bool toggle = true;
                 TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer(); // new tap gesture recognizer
                                                                                         // add a tap event
                 tapGestureRecognizer.Tapped += (object sender, EventArgs e) =>
                 {
                     Frame tFrame = (Frame)sender; // grab the object details
-
                     if (toggle)
                     {
                         tFrame.SetDynamicResource(StyleProperty, "newFrameStyle");
+                        showLabel.IsVisible = false;
+                        //showLabel.Text = "Tap to Hide";
                         //tFrame.Resources["frameStyle"] = Application.Current.Resources["newFrameStyle"]; // change the resources style
                         toggle = false;
                     }
                     else
                     {
                         tFrame.SetDynamicResource(StyleProperty, "frameStyle");
+                        showLabel.IsVisible = true;
+                        //showLabel.Text = "Tap to View";
                         //tFrame.Resources["newFrameStyle"] = Application.Current.Resources["frameStyle"]; // change the resources style
                         toggle = true;
                     }
@@ -52,15 +64,11 @@ namespace CardListDisplay
                 frame.SetDynamicResource(StyleProperty, "frameStyle"); // setting the style of the frame, needs to be dynamic
                 frame.GestureRecognizers.Add(tapGestureRecognizer); // add a tap event for the frame
 
-                StackLayout innerLayout = new StackLayout(); // new stack layout, this will hold the text content
-
-                // labels with styles and text
-                Label accountLabel = new Label { Text = accounts[i], Style = (Style)Application.Current.Resources["labelStyle"] };
-                Label showLabel = new Label { Text = "Tap to View" };
-
                 // adding everything to the frame and layouts
                 innerLayout.Children.Add(accountLabel);
                 innerLayout.Children.Add(showLabel);
+                innerLayout.Children.Add(username);
+                innerLayout.Children.Add(password);
                 frame.Content = innerLayout;
                 MainLayout.Children.Add(frame);
             }
