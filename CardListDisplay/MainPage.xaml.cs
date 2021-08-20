@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -12,27 +14,53 @@ namespace CardListDisplay
     {
         private List<string> accounts; // declare new list for account names
         private List<string> showAccounts;
+        private List<Account> fullAccounts;
         public MainPage()
         {
             InitializeComponent();
             accounts = new List<string>() { "Apple", "Banana", "Cherry", "Donut", "Eclair", "Fruit" }; // initialize the list
             showAccounts = new List<string>() { "Bunnies", "Kittens", "Puppies", "Cubs", "Babies", "Random" };
+            fullAccounts = new List<Account>();
+            LoadAccountDetails();
             LoadCards(); // call method to load cards
+        }
+
+        private void LoadAccountDetails()
+        {
+            // string for keys
+            string line;
+
+            // to view the embedded resource
+            Assembly assembly = IntrospectionExtensions.GetTypeInfo(typeof(App)).Assembly;
+            Stream stream = assembly.GetManifestResourceStream("CardListDisplay.pwList.txt");
+
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                while (!reader.EndOfStream)
+                {
+                    line = reader.ReadLine();
+                    string[] splitLine = line.Split(',');
+                    Account account = new Account() { AccountName = splitLine[0], Username = splitLine[1], Password = splitLine[2] };
+
+                    // need this for the listview
+                    fullAccounts.Add(account);
+                }
+            }
         }
 
         private void LoadCards()
         {
             // adding cards to the list!
-            for (int i = 0; i < accounts.Count; i++)
+            foreach (var item in fullAccounts)
             {
 
                 StackLayout innerLayout = new StackLayout(); // new stack layout, this will hold the text content
 
                 // labels with styles and text
-                Label accountLabel = new Label { Text = accounts[i], Style = (Style)Application.Current.Resources["labelStyle"] };
+                Label accountLabel = new Label { Text = item.AccountName, Style = (Style)Application.Current.Resources["labelStyle"] };
                 Label showLabel = new Label { Text = "Tap to View" };
-                Label username = new Label { Text = showAccounts[i] };
-                Label password = new Label { Text = showAccounts[i] };
+                Label username = new Label { Text = $"Username:\t\t{item.Username}" };
+                Label password = new Label { Text = $"Password:\t\t\t{item.Password}" };
 
                 bool toggle = true;
                 TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer(); // new tap gesture recognizer
