@@ -4,18 +4,8 @@
              x:Class="CardListDisplay.App">
     <Application.Resources>
         <ResourceDictionary>
-            <!--Might not use this button style-->
-            <Style x:Key="buttonStyle" TargetType="Button">
-                <Setter Property="FontSize" Value="Large"/>
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="CornerRadius" Value="15"/>
-                <Setter Property="Margin" Value="15"/>
-                <Setter Property="HeightRequest" Value="70"/>
-                <Setter Property="HeightRequest" Value="70"/>
-            </Style>
-            
-            <!--Styles for the frame and label-->
-            <Style x:Key="frameStyle" TargetType="Frame">
+            <!--Card layout style, created using a frame-->
+            <Style x:Key="accountCardStyle" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="15"/>
                 <Setter Property="Margin" Value="15,10,15,10"/>
                 <Setter Property="HeightRequest" Value="48"/>
@@ -23,19 +13,29 @@
                 <Setter Property="BackgroundColor" Value="LightBlue"/>
             </Style>
             
-            <!--Label style-->
-            <Style x:Key="labelStyle" TargetType="Label">
+            <!--Title label style, for showing the account information-->
+            <Style x:Key="accountLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="Title"/>
                 <Setter Property="TextColor" Value="Black"/>
             </Style>
 
-            <!--Test for changing styles-->
-            <Style x:Key="newFrameStyle" TargetType="Frame">
+            <!--Expanded card layout style, for when the user presses a "card"-->
+            <Style x:Key="expandAccountCardStyle" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="15"/>
                 <Setter Property="Margin" Value="15,10,15,10"/>
                 <Setter Property="HeightRequest" Value="85"/>
                 <Setter Property="BorderColor" Value="Black"/>
                 <Setter Property="BackgroundColor" Value="LightBlue"/>
+            </Style>
+
+            <!--just for testing-->
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="Margin" Value="15"/>
+                <Setter Property="HeightRequest" Value="70"/>
+                <Setter Property="HeightRequest" Value="70"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

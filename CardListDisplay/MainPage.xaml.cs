@@ -12,19 +12,25 @@ namespace CardListDisplay
 {
     public partial class MainPage : ContentPage
     {
-        private List<string> accounts; // declare new list for account names
+        // declare collections for account information
+        private List<string> accounts;
         private List<string> showAccounts;
         private List<Account> fullAccounts;
         public MainPage()
         {
             InitializeComponent();
+            // initialize collections with default values
             accounts = new List<string>() { "Apple", "Banana", "Cherry", "Donut", "Eclair", "Fruit" }; // initialize the list
             showAccounts = new List<string>() { "Bunnies", "Kittens", "Puppies", "Cubs", "Babies", "Random" };
             fullAccounts = new List<Account>();
+            // Retrieve info from account text file
             LoadAccountDetails();
             LoadCards(); // call method to load cards
         }
 
+        /// <summary>
+        /// Retrieves the account information from the provided text file
+        /// </summary>
         private void LoadAccountDetails()
         {
             // string for keys
@@ -48,20 +54,23 @@ namespace CardListDisplay
             }
         }
 
+        /// <summary>
+        /// Populates the UI with cards containing account information
+        /// </summary>
         private void LoadCards()
         {
             // adding cards to the list!
             foreach (var item in fullAccounts)
             {
-
+                // Define overall layout and UI elements
                 StackLayout innerLayout = new StackLayout(); // new stack layout, this will hold the text content
-
                 // labels with styles and text
-                Label accountLabel = new Label { Text = item.AccountName, Style = (Style)Application.Current.Resources["labelStyle"] };
+                Label accountLabel = new Label { Text = item.AccountName, Style = (Style)Application.Current.Resources["accountLabelStyle"] };
                 Label showLabel = new Label { Text = "Tap to View" };
                 Label username = new Label { Text = $"Username:\t\t{item.Username}" };
                 Label password = new Label { Text = $"Password:\t\t\t{item.Password}" };
 
+                // Logic for tap gestures when frame/card is pressed
                 bool toggle = true;
                 TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer(); // new tap gesture recognizer
                                                                                         // add a tap event
@@ -70,26 +79,26 @@ namespace CardListDisplay
                     Frame tFrame = (Frame)sender; // grab the object details
                     if (toggle)
                     {
-                        tFrame.SetDynamicResource(StyleProperty, "newFrameStyle");
+                        tFrame.SetDynamicResource(StyleProperty, "expandAccountCardStyle");
                         showLabel.IsVisible = false;
                         //showLabel.Text = "Tap to Hide";
-                        //tFrame.Resources["frameStyle"] = Application.Current.Resources["newFrameStyle"]; // change the resources style
+                        //tFrame.Resources["accountCardStyle"] = Application.Current.Resources["expandAccountCardStyle"]; // change the resources style
                         toggle = false;
                     }
                     else
                     {
-                        tFrame.SetDynamicResource(StyleProperty, "frameStyle");
+                        tFrame.SetDynamicResource(StyleProperty, "accountCardStyle");
                         showLabel.IsVisible = true;
                         //showLabel.Text = "Tap to View";
-                        //tFrame.Resources["newFrameStyle"] = Application.Current.Resources["frameStyle"]; // change the resources style
+                        //tFrame.Resources["expandAccountCardStyle"] = Application.Current.Resources["accountCardStyle"]; // change the resources style
                         toggle = true;
                     }
-                    //Resources["frameStyle"] = Application.Current.Resources["newFrameStyle"];
+                    //Resources["accountCardStyle"] = Application.Current.Resources["expandAccountCardStyle"];
                 };
 
-                // new frame, this is the main background of the template
+                // new frame, this is the main background of the template where all the elements will be placed
                 Frame frame = new Frame();
-                frame.SetDynamicResource(StyleProperty, "frameStyle"); // setting the style of the frame, needs to be dynamic
+                frame.SetDynamicResource(StyleProperty, "accountCardStyle"); // setting the style of the frame, needs to be dynamic
                 frame.GestureRecognizers.Add(tapGestureRecognizer); // add a tap event for the frame
 
                 // adding everything to the frame and layouts
