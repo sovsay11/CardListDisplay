@@ -3,9 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CardListDisplay.MainPage">
     <ScrollView>
-        <StackLayout x:Name="MainLayout" Padding="0, 10, 0, 20">
-            <!--Here is the XAML version of the template card I created (use for future reference)-->
-            <!--<Frame Style="{DynamicResource frameStyle}">
+        <StackLayout>
+            <!--Search field-->
+            <Frame CornerRadius="15" Margin="10">
+                <Entry Placeholder="Enter account title"/>
+            </Frame>
+            <!--Layout for the account cards-->
+            <StackLayout x:Name="MainLayout" Padding="0, 10, 0, 20">
+                <!--Here is the XAML version of the template card I created (use for future reference)-->
+                <!--<Frame Style="{DynamicResource frameStyle}">
                 <StackLayout>
                     <Label Text="Account Title" Style="{DynamicResource labelStyle}"/>
                     <Label Text="Tap to view" Style="{DynamicResource labelViewStyle}"/>
@@ -22,6 +28,7 @@
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Frame.GestureRecognizers>
             </Frame>-->
+            </StackLayout>
         </StackLayout>
     </ScrollView>
 </ContentPage>
