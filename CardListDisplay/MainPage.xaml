@@ -5,11 +5,15 @@
     <ScrollView>
         <StackLayout>
             <!--Search field-->
-            <Frame CornerRadius="15" Margin="10">
-                <Entry Placeholder="Enter account title"/>
+            <Frame CornerRadius="15"
+                   Margin="10">
+                <Entry x:Name="SearchEntry"
+                       Placeholder="Enter account title"
+                       TextChanged="SearchEntry_TextChanged" />
             </Frame>
             <!--Layout for the account cards-->
-            <StackLayout x:Name="MainLayout" Padding="0, 10, 0, 20">
+            <StackLayout x:Name="MainLayout"
+                         Padding="0, 10, 0, 20">
                 <!--Here is the XAML version of the template card I created (use for future reference)-->
                 <!--<Frame Style="{DynamicResource frameStyle}">
                 <StackLayout>

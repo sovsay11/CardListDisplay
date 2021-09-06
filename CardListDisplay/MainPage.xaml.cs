@@ -24,15 +24,18 @@ namespace CardListDisplay
             showAccounts = new List<string>() { "Bunnies", "Kittens", "Puppies", "Cubs", "Babies", "Random" };
             fullAccounts = new List<Account>();
             // Retrieve info from account text file
-            LoadAccountDetails();
+            LoadAccountDetails(SearchEntry.Text);
             LoadCards(); // call method to load cards
         }
 
         /// <summary>
         /// Retrieves the account information from the provided text file
         /// </summary>
-        private void LoadAccountDetails()
+        private void LoadAccountDetails(string searchItem)
         {
+            // reset the list
+            fullAccounts.Clear();
+
             // string for keys
             string line;
 
@@ -48,8 +51,12 @@ namespace CardListDisplay
                     string[] splitLine = line.Split(',');
                     Account account = new Account() { AccountName = splitLine[0], Username = splitLine[1], Password = splitLine[2] };
 
-                    // need this for the listview
-                    fullAccounts.Add(account);
+                    if (searchItem == null || account.AccountName.Contains(searchItem))
+                    {
+                        // (searchItem != null || searchItem != "") && 
+                        // need this for the listview
+                        fullAccounts.Add(account);
+                    }
                 }
             }
         }
@@ -59,6 +66,9 @@ namespace CardListDisplay
         /// </summary>
         private void LoadCards()
         {
+            // reset the layout
+            MainLayout.Children.Clear();
+
             // adding cards to the list!
             foreach (var item in fullAccounts)
             {
@@ -109,6 +119,12 @@ namespace CardListDisplay
                 frame.Content = innerLayout;
                 MainLayout.Children.Add(frame);
             }
+        }
+
+        private void SearchEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LoadAccountDetails(SearchEntry.Text);
+            LoadCards();
         }
     }
 }
