@@ -12,27 +12,7 @@
                        TextChanged="SearchEntry_TextChanged" />
             </Frame>
             <!--Layout for the account cards-->
-            <StackLayout x:Name="MainLayout"
-                         Padding="0, 10, 0, 20">
-                <!--Here is the XAML version of the template card I created (use for future reference)-->
-                <!--<Frame Style="{DynamicResource frameStyle}">
-                <StackLayout>
-                    <Label Text="Account Title" Style="{DynamicResource labelStyle}"/>
-                    <Label Text="Tap to view" Style="{DynamicResource labelViewStyle}"/>
-                </StackLayout>
-                <Frame.Background>
-                    <LinearGradientBrush EndPoint="1,0.5">
-                        <GradientStop Color="LightBlue"
-                                      Offset="0"/>
-                        <GradientStop Color="White"
-                                      Offset="1"/>
-                    </LinearGradientBrush>
-                </Frame.Background>
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                </Frame.GestureRecognizers>
-            </Frame>-->
-            </StackLayout>
+            <ListView x:Name="LstViewAccounts"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>
